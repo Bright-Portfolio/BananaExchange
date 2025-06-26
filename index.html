@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Banana Exchange</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <h1>Banana Exchange</h1>
+    <form id="exForm"> 
+      <label for="base-cur">from</label>
+      <input type="text" id="base-cur" />
+
+      <label for="target-cur">to</label>
+      <input type="text" id="target-cur" />
+
+      <label for="amount">Amount</label>
+      <input type="text" id="amount"/>
+      <button type="submit" id="con-btn">Convert</button>
+    </form>
+    <div id="con-result"></div>
+  </body>
+  <script src="./index.js"></script>
+</html>
+<!-- base currency will be set to USD due to free plan API -->
