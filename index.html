@@ -8,15 +8,22 @@
   </head>
   <body>
     <h1>Banana Exchange</h1>
-    <form id="exForm"> 
-      <label for="base-cur">from</label>
-      <input type="text" id="base-cur" />
+    <form id="exForm">
+      <div class="input-container">
+        <label for="base-cur">from</label>
+        <input type="text" id="base-cur" list="symbols-list" />
+        <datalist id="symbols-list">
+          <option value="USD"></option>
+        </datalist>
+        <!-- <input type="text" id="base-amount"> -->
+      </div>
 
-      <label for="target-cur">to</label>
-      <input type="text" id="target-cur" />
-
-      <label for="amount">Amount</label>
-      <input type="text" id="amount"/>
+      <div class="input-container">
+        <label for="target-cur">to</label>
+        <input type="text" id="target-cur" list="symbols-list" />
+      </div>
+      <!-- <label for="amount">Amount</label>
+      <input type="text" id="amount" /> -->
       <button type="submit" id="con-btn">Convert</button>
     </form>
     <div id="con-result"></div>
