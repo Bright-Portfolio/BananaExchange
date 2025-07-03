@@ -31,15 +31,16 @@ form {
 }
 
 .input-container {
+  position: relative;
   display: flex;
   justify-content: flex-start;
   flex: 1;
-  width:100%;
-  margin: 2px;
-  margin-top: 20px;
+  margin: 20px auto;
+  width: 90%;
 }
 
-#base-cur, #target-cur {
+#base-cur,
+#target-cur {
   position: absolute;
   left: 50px;
   width: 15%;
@@ -53,12 +54,22 @@ form {
   text-align: center;
 }
 
-span {
-  font-weight: 600;
+#base-amount,
+#target-amount {
+  position: absolute;
+  left: 109px;
+  margin: auto;
+  padding: 10px 2px;
+  width: 60%;
+  height: auto;
+  outline: 0;
+  border: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
 }
 
 #con-btn {
-  margin:20px auto 5px; 
+  margin: 20px auto 5px;
   padding: 1px 10px;
   font-weight: 700;
   font-size: 1rem;
