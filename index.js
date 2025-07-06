@@ -2,38 +2,52 @@ const accesskey = "badf0a31c03a4698ba131fc4b1b21bc1";
 const formEle = document.querySelector("#exForm");
 const baseCur = document.querySelector("#base-cur");
 const targetCur = document.querySelector("#target-cur");
-const inputAmount = document.querySelector("#amount");
+const targetAmount = document.querySelector("#target-amount");
 const conBtn = document.querySelector("#con-btn");
 const conResult = document.querySelector("#con-result");
+const symbolsArray = [];
 // console.dir(exForm);
 
 // fetch symbols data for slection
-//this func is not finish yet the data not filter only the country code that is global.
+//need to make symbols() run before DOM completely load
+//filter currency that is not crypto from year < 2013
 const symbols = async () => {
   try {
     const symbolsRes = await fetch(
-      `https://api.currencyfreaks.com/v2.0/supported-currencies`
+      `https://api.currencyfreaks.com/v2.0/historical-data-limits`
     );
     const symbolsData = await symbolsRes.json();
-    console.log(symbolsData);
+    const symbolsList = symbolsData.availabilityPeriod;
+
+    for (const list in symbolsList) {
+      const year = symbolsList[list];
+      if (year < "2013") {
+        symbolsArray.push(list);
+        
+      }
+    }
   } catch (error) {
     console.log("Error", error);
   }
 };
-symbols();
+
+document.addEventListener("DOMContentLoaded", () => {
+  symbols();
+});
+console.log(symbolsArray);
+
 
 async function exRate() {
   const base = baseCur.value;
   const target = targetCur.value;
-  const amount = inputAmount.value;
+  const amount = targetAmount.value;
 
   const url = `https://api.currencyfreaks.com/v2.0/rates/latest?apikey=${accesskey}&symbols=${target}`;
   const res = await fetch(url);
   const data = await res.json();
-  const rate = data.rates;
-  console.log(rate);
+  const rate = data.rates[target];
 
-  conResult.innerHTML = data.rates.EUR;
+  conResult.innerHTML = rate;
 }
 
 formEle.addEventListener("submit", (e) => {
