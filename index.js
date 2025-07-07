@@ -5,12 +5,10 @@ const targetCur = document.querySelector("#target-cur");
 const targetAmount = document.querySelector("#target-amount");
 const conBtn = document.querySelector("#con-btn");
 const conResult = document.querySelector("#con-result");
+const listOfSymbols = document.querySelector("#symbols-list");
 const symbolsArray = [];
 // console.dir(exForm);
 
-// fetch symbols data for slection
-//need to make symbols() run before DOM completely load
-//filter currency that is not crypto from year < 2013
 const symbols = async () => {
   try {
     const symbolsRes = await fetch(
@@ -20,10 +18,11 @@ const symbols = async () => {
     const symbolsList = symbolsData.availabilityPeriod;
 
     for (const list in symbolsList) {
+      const option = document.createElement("option");
       const year = symbolsList[list];
       if (year < "2013") {
-        symbolsArray.push(list);
-        
+        option.value = list;
+        listOfSymbols.append(option);
       }
     }
   } catch (error) {
@@ -31,29 +30,39 @@ const symbols = async () => {
   }
 };
 
-document.addEventListener("DOMContentLoaded", () => {
-  symbols();
+document.addEventListener("DOMContentLoaded", async () => {
+  await symbols();
 });
-console.log(symbolsArray);
 
+// console.log(symbols);
 
 async function exRate() {
-  const base = baseCur.value;
-  const target = targetCur.value;
-  const amount = targetAmount.value;
+  try {
+    const base = baseCur.value;
+    const target = targetCur.value;
+    const amount = targetAmount.value;
 
-  const url = `https://api.currencyfreaks.com/v2.0/rates/latest?apikey=${accesskey}&symbols=${target}`;
-  const res = await fetch(url);
-  const data = await res.json();
-  const rate = data.rates[target];
+    const url = `https://api.currencyfreaks.com/v2.0/rates/latest?apikey=${accesskey}&symbols=${target}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    const rate = data.rates[target];
 
-  conResult.innerHTML = rate;
+    conResult.innerHTML = rate;
+    return rate;
+  } catch (error) {
+    console.log("Error", error);
+  }
 }
+
+console.log(exRate());
 
 formEle.addEventListener("submit", (e) => {
   e.preventDefault();
   exRate();
 });
+
+const moneyConvert = () => {};
+// moneyConvert();
 
 // note:ลอง loop เอาสกุุลทั้งหมดที่ api นี้ support มาใส่ไว้ใน option
 // หาวิธีว่าเราจะทำยังไงให้ การคำนวณสกุลตอบโจทย์ user มากที่สุดใน api แบบฟรีนี้

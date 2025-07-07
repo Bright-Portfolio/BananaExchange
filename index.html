@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Banana Exchange</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Banana Exchange</title>
-  <link rel="stylesheet" href="./style.css" />
-</head>
+  <body>
+    <h1>Banana Exchange</h1>
+    <form id="exForm">
+      <div class="input-container">
+        <label for="base-cur">from</label>
+        <input type="text" id="base-cur" list="symbols-list" name="base-cur" />
+        <input type="text" id="base-amount" />
+        <datalist id="symbols-list"></datalist>
+      </div>
 
-<body>
-  <h1>Banana Exchange</h1>
-  <form id="exForm">
-    <div class="input-container">
-      <label for="base-cur">from</label>
-      <input type="text" id="base-cur" list="symbols-list" />
-      <datalist id="symbols-list">
-        <option value="USD"></option>
-      </datalist>
-      <input type="text" id="base-amount">
-    </div>
-
-    <div class="input-container">
-      <label for="target-cur">to</label>
-      <input type="text" id="target-cur" list="symbols-list" />
-      <input type="text" id="target-amount">
-    </div>
-    <button type="submit" id="con-btn">Convert</button>
-  </form>
-  <div id="con-result"></div>
-</body>
-<script src="./index.js"></script>
-
+      <div class="input-container">
+        <label for="target-cur">to</label>
+        <input
+          type="text"
+          id="target-cur"
+          list="symbols-list"
+          name="target-cur"
+        />
+        <input type="text" id="target-amount" />
+      </div>
+      <button type="submit" id="con-btn">Convert</button>
+    </form>
+    <div id="con-result"></div>
+  </body>
+  <script src="./index.js"></script>
 </html>
 <!-- base currency will be set to USD due to free plan API -->
