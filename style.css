@@ -43,7 +43,7 @@ form {
 #target-cur {
   position: absolute;
   left: 50px;
-  width: 15%;
+  width: 50%;
   height: auto;
   padding: 10px 2px;
   outline: 0;
@@ -54,13 +54,12 @@ form {
   text-align: center;
 }
 
-#base-amount,
-#target-amount {
+.amount {
   position: absolute;
-  left: 109px;
+  left: 232px;
   margin: auto;
   padding: 10px 2px;
-  width: 60%;
+  width: 30%;
   height: auto;
   outline: 0;
   border: 0;
@@ -78,3 +77,6 @@ form {
   box-shadow: 3px 3px;
   cursor: pointer;
 }
+
+/* to do list */
+/* make input have outline while active */

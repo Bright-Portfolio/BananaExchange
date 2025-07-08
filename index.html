@@ -12,8 +12,8 @@
     <form id="exForm">
       <div class="input-container">
         <label for="base-cur">from</label>
-        <input type="text" id="base-cur" list="symbols-list" name="base-cur" />
-        <input type="text" id="base-amount" />
+        <input type="text" id="base-cur" list="symbols-list" name="base-cur" value="USD"/>
+        <input type="text" class="amount amount-input" value="1"/>
         <datalist id="symbols-list"></datalist>
       </div>
 
@@ -24,8 +24,9 @@
           id="target-cur"
           list="symbols-list"
           name="target-cur"
+          value="THB"
         />
-        <input type="text" id="target-amount" />
+        <input type="text" class="amount amount-display" />
       </div>
       <button type="submit" id="con-btn">Convert</button>
     </form>
