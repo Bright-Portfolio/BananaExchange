@@ -3,11 +3,13 @@ const formEle = document.querySelector("#exForm");
 const baseCur = document.querySelector("#base-cur");
 const targetCur = document.querySelector("#target-cur");
 const amountInput = document.querySelector(".amount-input");
+const amountDis = document.querySelector(".amount-display");
 const conBtn = document.querySelector("#con-btn");
 const conResult = document.querySelector("#con-result");
 const listOfSymbols = document.querySelector("#symbols-list");
 const symbolsArray = [];
 // console.dir(amountInput);
+amountDis.innerHTML = "abc"
 
 const symbols = async () => {
   try {
@@ -52,7 +54,7 @@ async function exRate() {
     const convertedAmount = rate * amount;
     console.log(convertedAmount);
 
-    conResult.innerHTML = convertedAmount;
+    amountDis.innerHTML = convertedAmount;
   } catch (error) {
     console.log("Error", error);
   }
